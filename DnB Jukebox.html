@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&B Jukebox</title>
+    <meta name="description" content="Generate custom drum and bass tracks with AI - Your portable jukebox">
+    <meta name="theme-color" content="#5D5CDE">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="D&B Jukebox">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkQmQiBKdWtlYm94IiwKICAic2hvcnRfbmFtZSI6ICJEJkIgSnVrZWJveCIsCiAgImRlc2NyaXB0aW9uIjogIkdlbmVyYXRlIGN1c3RvbSBkcnVtIGFuZCBiYXNzIHRyYWNrcyB3aXRoIEFJIiwKICAic3RhcnRfdXJsIjogIi4vIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMTgxODE4IiwKICAidGhlbWVfY29sb3IiOiAiIzVENUNERSIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2RtbGxkMEp2ZUQwaU1DQXdJREV5T0NBeU9EZ2lJR1pwYkd3OUlpTTNOamMySWlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M00yNXZjbWN2TWpBd01DOXpkbWNpUGp4d1lYUm9JR1E5SWsxMk1UTm9OakJzTlRaM01qZGlNakZzTFRJeWJUSTNMUzB4Tm1nemMwZ3lPVU14TUVwSWJURTNaU0lnWm1sc2JEMGlJelF3Wm1abUlpOCtQSEJoZEdnZ1pEMGlUVGM0SURFMFl6WXpJRElnTXprZ01URWdMVGRqTkRnZ0xUSWdOakF0TlRZZ09DMHlNVGRqTFRJMExUSTVMUzAwTmkwNUxUVTBMVEZ6SWlCbWFXeHNQU0lqWmpBd1ptWWlMejQ4TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiMTI4eDEyOCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2RtbGxkMEp2ZUQwaU1DQXdJRFV4TWlBMU1USWlJR1pwYkd3OUlpTTNOamMySWlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M00yNXZjbWN2TWpBd01DOXpkbWNpUGp4eVpXTjBJSGc5SWpBaUlIazlJakFpSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUJtYVd4c1BTSWRNVGN4TlRFeElpOCtQSEJoZEdnZ1pEMGlUVGcySURRekxUUXlZak1nTlRGc01UZ3ROVFZqTWpjZ01URXROVGtyTWpnMUxUSTFMVFJzTURraE5UZGpMVGc1SURjNExURXhOelU1TFRJeU9TQXlNVEV0TXpJNWRERXdJQ0l2UGp4d1lYUm9JR1E5SWswM05qTWdNVEkyTFRONE1HdzNMVGhqTkM0eUxUVWdNekF1TlMwM0xqUWdOalV0TXpOek9TSWdabWxzYkQwaUl6Wm1ZVFkzTmlJdlBqeGphWEpqYkdVZ1kzZzlJakkxTmlJZ1kza2lQU0l5TlRZaUlISTlJakUyTURJaUlITjBjbTlyWlQwaUl6QXdabVptSWlCemRISnZhMlV0ZDJsa2RHZzlJamM0SWlCbWFXeHNQU0l1YlhVNElpOCtQQzl6ZG1jKyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsCiAgICAgICJwdXJwb3NlIjogIm1hc2thYmxlIgogICAgfQogIF0sCiAgImNhdGVnb3JpZXMiOiBbIm11c2ljIiwgImVudGVydGFpbm1lbnQiLCAiYXVkaW8iXSwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJzaG9ydGN1dHMiOiBbCiAgICB7CiAgICAgICJuYW1lIjogIkdlbmVyYXRlIExpcXVpZCBEJkIiLAogICAgICAic2hvcnRfbmFtZSI6ICJMaXF1aWQiLAogICAgICAiZGVzY3JpcHRpb24iOiAiUXVpY2sgZ2VuZXJhdGUgbGlxdWlkIERuQiB0cmFjayIsCiAgICAgICJ1cmwiOiAiLz9nZW5yZT1saXF1aWQiLAogICAgICAiaWNvbnMiOiBbeyAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU16SWlJR2hsYVdkb2REMGlNeklpSUdacGJHdzlJaU0xUkRWRFJFVWlQanh5WldOMElIZzlJalFpSUhrOUlqUWlJSGRwWkhSb1BTSTJJQ0JvWldsbmFIUTlJalkwTGpNaUlISjRQU0l5SWk4K1BDOXpkbWMrIiwgInNpemVzIjogIjMyek0zMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiIH1dCiAgICB9LAogICAgewogICAgICAibmFtZSI6ICJHZW5lcmF0ZSBOZXV0cm9mdW5rIEQmQiIsCiAgICAgICJzaG9ydF9uYW1lIjogIk5ldXJvIiwKICAgICAgImRlc2NyaXB0aW9uIjogIlF1aWNrIGdlbmVyYXRlIG5ldXJvZnVuayBEbkIgdHJhY2siLAogICAgICAidXJsIjogIi8/Z2VucmU9bmV1cm9mdW5rIiwKICAgICAgImljb25zIjogW3sgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNeklpSUdobGFXZG9kRDBpTXpJaUlHWnBiR3c5SWlNd1ptWmpNeUlQaWpWeVpXTjBJSGc5SWpRaUlIazlJalFpSUhkcFpIUm9QU0kyU1VCb1pXbG5hSFE5U1U0Mk5DNHpTeUIwZUQwcU1pWkJjbXRWUFNJaUx6NDhMM04yWno0PSIsICJzaXplcyI6ICIzMngzMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiIH1dCiAgICB9CiAgXQp9">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            blue: '#00ffff',
+                            purple: '#ff00ff',
+                            green: '#00ff00',
+                            pink: '#ff1493',
+                            orange: '#ff4500'
+                        },
+                        jukebox: {
+                            dark: '#1a0f2e',
+                            metal: '#2d3748',
+                            chrome: '#e2e8f0'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'spin-slow': 'spin 4s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px currentColor' },
+                            '100%': { boxShadow: '0 0 20px currentColor, 0 0 30px currentColor' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .neon-border {
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ff1493) 1;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .vinyl-record {
+            background: radial-gradient(circle, #1a1a1a 20%, #000 40%, #1a1a1a 60%, #000 80%);
+            border-radius: 50%;
+        }
+        
+        .vinyl-label {
+            background: radial-gradient(circle, #ff1493, #8b008b);
+            border-radius: 50%;
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-gray-900 dark:via-purple-900 dark:to-black min-h-screen">
+    <!-- Dark mode detection -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <div class="container mx-auto px-4 py-6">
+        <!-- PWA Install Banner -->
+        <div id="installBanner" class="hidden fixed top-4 left-4 right-4 z-50 bg-gradient-to-r from-neon-purple to-neon-blue p-4 rounded-lg glass-effect neon-border border-neon-green">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-neon-green rounded-lg flex items-center justify-center">
+                        📱
+                    </div>
+                    <div>
+                        <div class="text-white font-bold text-sm">Install D&B Jukebox</div>
+                        <div class="text-gray-200 text-xs">Get the full app experience</div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="installBtn" class="bg-neon-green text-black px-4 py-2 rounded-lg font-semibold text-sm hover:bg-white transition-colors">
+                        Install
+                    </button>
+                    <button id="dismissBtn" class="text-gray-300 hover:text-white px-2">
+                        ✕
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green animate-pulse-slow">
+                D&B JUKEBOX
+            </h1>
+            <p class="text-neon-blue text-lg mt-2">SELECT YOUR BASSLINE</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Jukebox Interface -->
+            <div class="lg:col-span-2">
+                <div class="glass-effect rounded-3xl p-6 neon-border border-neon-purple">
+                    <!-- Genre Selection -->
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-neon-green mb-4">GENRE SELECTION</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <button class="genre-btn bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="liquid">
+                                LIQUID
+                            </button>
+                            <button class="genre-btn bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="neurofunk">
+                                NEUROFUNK
+                            </button>
+                            <button class="genre-btn bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="jump-up">
+                                JUMP-UP
+                            </button>
+                            <button class="genre-btn bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="tech">
+                                TECH
+                            </button>
+                            <button class="genre-btn bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="minimal">
+                                MINIMAL
+                            </button>
+                            <button class="genre-btn bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-105" data-genre="hardcore">
+                                HARDCORE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Prompt -->
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-neon-green mb-4">CUSTOM VIBES</h2>
+                        <div class="space-y-3">
+                            <textarea 
+                                id="customPrompt" 
+                                placeholder="Describe your perfect D&B track... (e.g., 'dark atmospheric neurofunk with rolling basslines and crispy breaks')"
+                                class="w-full p-4 bg-black/50 border-2 border-neon-blue/50 rounded-lg text-white placeholder-gray-400 focus:border-neon-blue focus:outline-none resize-none text-base"
+                                rows="3"
+                            ></textarea>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="vibe-btn bg-neon-blue/20 border border-neon-blue text-neon-blue px-3 py-1 rounded-full text-sm hover:bg-neon-blue hover:text-black transition-all" data-vibe="dark atmospheric">dark atmospheric</button>
+                                <button class="vibe-btn bg-neon-purple/20 border border-neon-purple text-neon-purple px-3 py-1 rounded-full text-sm hover:bg-neon-purple hover:text-black transition-all" data-vibe="rolling basslines">rolling basslines</button>
+                                <button class="vibe-btn bg-neon-green/20 border border-neon-green text-neon-green px-3 py-1 rounded-full text-sm hover:bg-neon-green hover:text-black transition-all" data-vibe="crispy breaks">crispy breaks</button>
+                                <button class="vibe-btn bg-neon-pink/20 border border-neon-pink text-neon-pink px-3 py-1 rounded-full text-sm hover:bg-neon-pink hover:text-black transition-all" data-vibe="heavy sub bass">heavy sub bass</button>
+                                <button class="vibe-btn bg-orange-400/20 border border-orange-400 text-orange-400 px-3 py-1 rounded-full text-sm hover:bg-orange-400 hover:text-black transition-all" data-vibe="liquid smooth">liquid smooth</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Generate Button -->
+                    <div class="text-center">
+                        <button id="generateBtn" class="bg-gradient-to-r from-neon-pink to-neon-orange hover:from-neon-orange hover:to-neon-pink text-black font-black text-xl px-8 py-4 rounded-full transform hover:scale-110 transition-all duration-300 animate-glow disabled:opacity-50 disabled:cursor-not-allowed">
+                            🎵 DROP THE BASS 🎵
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vinyl Player & Status -->
+            <div class="space-y-6">
+                <!-- Vinyl Player -->
+                <div class="glass-effect rounded-3xl p-6 neon-border border-neon-green">
+                    <h2 class="text-xl font-bold text-neon-green mb-4 text-center">NOW SPINNING</h2>
+                    <div class="relative w-48 h-48 mx-auto mb-4">
+                        <div id="vinyl" class="vinyl-record w-full h-full relative">
+                            <div class="vinyl-label w-16 h-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                                <div class="w-3 h-3 bg-black rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="trackInfo" class="text-center text-white">
+                        <div class="text-neon-blue font-semibold">Ready to drop</div>
+                        <div class="text-gray-400 text-sm">Select a genre and hit play</div>
+                    </div>
+                </div>
+
+                <!-- Generation Status -->
+                <div class="glass-effect rounded-3xl p-6 neon-border border-neon-blue">
+                    <h2 class="text-xl font-bold text-neon-blue mb-4">STATUS</h2>
+                    <div id="statusDisplay" class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">System:</span>
+                            <span class="text-neon-green">READY</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Queue:</span>
+                            <span id="queueStatus" class="text-neon-blue">EMPTY</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-300">Last drop:</span>
+                            <span id="lastTrack" class="text-gray-400">--</span>
+                        </div>
+                    </div>
+                    <div id="generationProgress" class="mt-4 hidden">
+                        <div class="text-neon-orange text-sm mb-2">Generating track...</div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-neon-blue to-neon-purple h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Tracks -->
+                <div class="glass-effect rounded-3xl p-6 neon-border border-neon-orange">
+                    <h2 class="text-xl font-bold text-neon-orange mb-4">RECENT DROPS</h2>
+                    <div id="recentTracks" class="space-y-2 text-sm">
+                        <div class="text-gray-400 text-center py-4">No tracks generated yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedGenre = '';
+        let isGenerating = false;
+        let trackHistory = [];
+
+        // Genre descriptions for better prompts
+        const genreDescriptions = {
+            'liquid': 'smooth liquid drum and bass with jazzy elements, warm basslines, and flowing melodies',
+            'neurofunk': 'dark complex neurofunk drum and bass with intricate basslines, technical beats, and futuristic sounds',
+            'jump-up': 'energetic jump-up drum and bass with bouncy basslines, ragga vocals, and party vibes',
+            'tech': 'technical drum and bass with precise engineering, minimal elements, and driving rhythms',
+            'minimal': 'minimal drum and bass with sparse arrangements, deep sub bass, and atmospheric pads',
+            'hardcore': 'hardcore drum and bass with aggressive beats, distorted basslines, and high energy'
+        };
+
+        // Initialize Poe API handler
+        if (window.Poe && window.Poe.registerHandler) {
+            window.Poe.registerHandler("music-handler", (result, context) => {
+                const msg = result.responses[0];
+                
+                if (msg.status === "error") {
+                    showError("Generation failed: " + msg.statusText);
+                    stopGeneration();
+                } else if (msg.status === "incomplete") {
+                    // Keep showing loading state
+                    updateGenerationStatus("Processing audio...");
+                } else if (msg.status === "complete") {
+                    if (msg.attachments && msg.attachments.length > 0) {
+                        const audioAttachment = msg.attachments[0];
+                        showGeneratedTrack(audioAttachment, context.genre, context.prompt);
+                    } else {
+                        showError("No audio was generated");
+                    }
+                    stopGeneration();
+                }
+            });
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Genre button clicks
+            document.querySelectorAll('.genre-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active state from all buttons
+                    document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('ring-4', 'ring-white'));
+                    // Add active state to clicked button
+                    this.classList.add('ring-4', 'ring-white');
+                    selectedGenre = this.dataset.genre;
+                    
+                    // Update track info
+                    document.getElementById('trackInfo').innerHTML = `
+                        <div class="text-neon-blue font-semibold">${selectedGenre.toUpperCase()} SELECTED</div>
+                        <div class="text-gray-400 text-sm">Ready to generate</div>
+                    `;
+                });
+            });
+
+            // Vibe button clicks
+            document.querySelectorAll('.vibe-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const prompt = document.getElementById('customPrompt');
+                    const vibe = this.dataset.vibe;
+                    const currentText = prompt.value.trim();
+                    
+                    if (currentText && !currentText.includes(vibe)) {
+                        prompt.value = currentText + ', ' + vibe;
+                    } else if (!currentText) {
+                        prompt.value = vibe;
+                    }
+                });
+            });
+
+            // Generate button click
+            document.getElementById('generateBtn').addEventListener('click', generateTrack);
+
+            // PWA install functionality
+            let deferredPrompt;
+            
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                document.getElementById('installBanner').classList.remove('hidden');
+            });
+
+            document.getElementById('installBtn').addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        document.getElementById('installBanner').classList.add('hidden');
+                    }
+                    deferredPrompt = null;
+                }
+            });
+
+            document.getElementById('dismissBtn').addEventListener('click', () => {
+                document.getElementById('installBanner').classList.add('hidden');
+            });
+
+            // Check URL parameters for quick generation
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlGenre = urlParams.get('genre');
+            if (urlGenre && genreDescriptions[urlGenre]) {
+                selectedGenre = urlGenre;
+                const genreBtn = document.querySelector(`[data-genre="${urlGenre}"]`);
+                if (genreBtn) {
+                    genreBtn.click();
+                    setTimeout(() => generateTrack(), 500);
+                }
+            }
+        });
+
+        async function generateTrack() {
+            if (isGenerating) return;
+            
+            if (!selectedGenre && !document.getElementById('customPrompt').value.trim()) {
+                showError('Please select a genre or enter a custom description');
+                return;
+            }
+
+            startGeneration();
+
+            // Build the prompt
+            let prompt = '';
+            const customText = document.getElementById('customPrompt').value.trim();
+            
+            if (customText) {
+                prompt = customText;
+            } else if (selectedGenre) {
+                prompt = genreDescriptions[selectedGenre];
+            }
+
+            // Add D&B context if not already mentioned
+            if (!prompt.toLowerCase().includes('drum') && !prompt.toLowerCase().includes('bass') && !prompt.toLowerCase().includes('d&b') && !prompt.toLowerCase().includes('dnb')) {
+                prompt = `drum and bass track with ${prompt}`;
+            }
+
+            try {
+                if (window.Poe && window.Poe.sendUserMessage) {
+                    await window.Poe.sendUserMessage(
+                        `@Lyria ${prompt}`,
+                        {
+                            handler: "music-handler",
+                            stream: false,
+                            openChat: false,
+                            handlerContext: { 
+                                genre: selectedGenre || 'custom',
+                                prompt: prompt
+                            }
+                        }
+                    );
+                } else {
+                    throw new Error('Poe API not available');
+                }
+            } catch (err) {
+                console.error('Error generating track:', err);
+                showError('Failed to generate track: ' + err.message);
+                stopGeneration();
+            }
+        }
+
+        function startGeneration() {
+            isGenerating = true;
+            const generateBtn = document.getElementById('generateBtn');
+            const vinyl = document.getElementById('vinyl');
+            const progress = document.getElementById('generationProgress');
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = '🎵 GENERATING... 🎵';
+            vinyl.classList.add('animate-spin-slow');
+            progress.classList.remove('hidden');
+            
+            document.getElementById('queueStatus').textContent = 'GENERATING';
+            updateGenerationStatus('Initializing AI music generation...');
+        }
+
+        function stopGeneration() {
+            isGenerating = false;
+            const generateBtn = document.getElementById('generateBtn');
+            const vinyl = document.getElementById('vinyl');
+            const progress = document.getElementById('generationProgress');
+            
+            generateBtn.disabled = false;
+            generateBtn.textContent = '🎵 DROP THE BASS 🎵';
+            vinyl.classList.remove('animate-spin-slow');
+            progress.classList.add('hidden');
+            
+            document.getElementById('queueStatus').textContent = 'EMPTY';
+        }
+
+        function updateGenerationStatus(message) {
+            const statusElement = document.querySelector('#generationProgress .text-neon-orange');
+            if (statusElement) {
+                statusElement.textContent = message;
+            }
+        }
+
+        function showGeneratedTrack(audioAttachment, genre, prompt) {
+            // Update track info
+            const trackTitle = `${genre.toUpperCase()} DROP`;
+            document.getElementById('trackInfo').innerHTML = `
+                <div class="text-neon-green font-semibold">${trackTitle}</div>
+                <div class="text-gray-400 text-sm">Fresh from the studio</div>
+            `;
+
+            // Add to history
+            const timestamp = new Date().toLocaleTimeString();
+            trackHistory.unshift({
+                title: trackTitle,
+                time: timestamp,
+                url: audioAttachment.url,
+                genre: genre
+            });
+
+            // Update recent tracks
+            updateRecentTracks();
+            
+            // Update last track
+            document.getElementById('lastTrack').textContent = `${trackTitle} (${timestamp})`;
+
+            // Create download link
+            createDownloadLink(audioAttachment, trackTitle);
+        }
+
+        function updateRecentTracks() {
+            const recentContainer = document.getElementById('recentTracks');
+            
+            if (trackHistory.length === 0) {
+                recentContainer.innerHTML = '<div class="text-gray-400 text-center py-4">No tracks generated yet</div>';
+                return;
+            }
+
+            const recentHTML = trackHistory.slice(0, 5).map(track => `
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 last:border-b-0">
+                    <div>
+                        <div class="text-white font-medium text-xs">${track.title}</div>
+                        <div class="text-gray-400 text-xs">${track.time}</div>
+                    </div>
+                    <div class="text-neon-${getGenreColor(track.genre)} text-xs font-semibold">
+                        ${track.genre.toUpperCase()}
+                    </div>
+                </div>
+            `).join('');
+
+            recentContainer.innerHTML = recentHTML;
+        }
+
+        function getGenreColor(genre) {
+            const colors = {
+                'liquid': 'blue',
+                'neurofunk': 'green',
+                'jump-up': 'pink',
+                'tech': 'orange',
+                'minimal': 'purple',
+                'hardcore': 'red',
+                'custom': 'blue'
+            };
+            return colors[genre] || 'blue';
+        }
+
+        function createDownloadLink(audioAttachment, title) {
+            // Create a floating download notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-gradient-to-r from-neon-green to-neon-blue p-4 rounded-lg glass-effect neon-border border-neon-green z-50 max-w-sm';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="text-2xl">🎵</div>
+                    <div>
+                        <div class="text-white font-bold text-sm">Track Ready!</div>
+                        <div class="text-gray-200 text-xs">${title}</div>
+                    </div>
+                    <a href="${audioAttachment.url}" download="${title}.mp3" class="bg-neon-green text-black px-3 py-1 rounded font-semibold text-xs hover:bg-white transition-colors">
+                        Download
+                    </a>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 10000);
+
+            // Add click to dismiss
+            notification.addEventListener('click', () => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            });
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'fixed top-20 right-4 bg-red-600 text-white p-4 rounded-lg shadow-lg z-50 max-w-sm';
+            errorDiv.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span>⚠️</span>
+                    <span class="text-sm">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-auto text-lg hover:text-gray-300">&times;</button>
+                </div>
+            `;
+            
+            document.body.appendChild(errorDiv);
+            
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.parentNode.removeChild(errorDiv);
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
